@@ -103,7 +103,7 @@ func probeHandler(w http.ResponseWriter, r *http.Request, logger log.Logger, con
 	}
 
 	fetcher := exporter.NewJSONFetcher(ctx, logger, config, r.URL.Query())
-	data, err := fetcher.FetchJSON(target)
+	data, err := fetcher.FetchJSON("https://www.virustotal.com/api/v3/domains/"+target)
 	if err != nil {
 		http.Error(w, "Failed to fetch JSON response. TARGET: "+target+", ERROR: "+err.Error(), http.StatusServiceUnavailable)
 		return

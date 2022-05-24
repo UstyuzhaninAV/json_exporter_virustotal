@@ -1,0 +1,35 @@
+---
+metrics:
+# - name: last_analysis_stats
+#   type: object
+#   help: last_analysis_stats json parce
+#   # path: '{.data.attributes.last_analysis_results[?(@.result != "clean")]}'
+#   # path: '{.data.attributes.last_analysis_results.Kaspersky}'
+#   path: '{.data}'
+#   labels:
+#     target: '{.id}'          # dynamic label
+#     # engine_name: '{.engine_name}'          # dynamic label
+#     # result: '{.result}'
+#   values:
+#     # active: 1      # static value
+#     harmless: '{.attributes.last_analysis_stats.harmless}' # dynamic value
+#     malicious: '{.attributes.last_analysis_stats.malicious}'
+#     suspicious: '{.attributes.last_analysis_stats.suspicious}'
+#     undetected: '{.attributes.last_analysis_stats.undetected}'
+#     timeout: '{.attributes.last_analysis_stats.timeout}'
+
+- name: virustotal
+  type: object
+  help: last_analysis_results json parce
+  path: '{.data}'
+  labels:
+    target: '{.id}'
+    result: '{.attributes.last_analysis_results.Sophos.result}'
+    engine_name: '{.attributes.last_analysis_results.Sophos.engine_name}'
+    category: '{.attributes.last_analysis_results.Sophos.category}'
+    method: '{.attributes.last_analysis_results.Sophos.method}'
+  values:
+    results: 1
+
+headers:
+  x-apikey: 7e2af5b0cd8b23a31a21d95aab19cecf984cefe8ef6443908b766578006d217d

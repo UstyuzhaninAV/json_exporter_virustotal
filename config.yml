@@ -24,12 +24,14 @@ metrics:
   path: '{.data}'
   labels:
     target: '{.id}'
-    result: '{.attributes.last_analysis_results.Sophos.result}'
-    engine_name: '{.attributes.last_analysis_results.Sophos.engine_name}'
-    category: '{.attributes.last_analysis_results.Sophos.category}'
-    method: '{.attributes.last_analysis_results.Sophos.method}'
+    result: '{.attributes.last_analysis_results[?(@.engine_name=="CMC Threat Intelligence")].result}'
+    # engine_name: '{.attributes.last_analysis_resultsBfore.Ai PreCrime.engine_name}'
+    # category: '{.attributes.last_analysis_results.Bfore.Ai PreCrime.category}'
+    # method: '{.attributes.last_analysis_results.Bfore.Ai PreCrime.method}'
   values:
     results: 1
 
 headers:
-  x-apikey: 7e2af5b0cd8b23a31a21d95aab19cecf984cefe8ef6443908b766578006d217d
+  x-apikey: [deleted]
+
+# x.data.attributes.last_analysis_results["CMC Threat Intelligence"].result
